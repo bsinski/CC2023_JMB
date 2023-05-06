@@ -26,6 +26,7 @@
 
 
 <script>
+  import axios from 'axios'
 export default {
   name: 'imageUpload',
   data() {
@@ -51,8 +52,6 @@ export default {
       }
   }
 } 
-  function changeImage(image) {
-        image.src = 'https://dirask.com/static/bucket/1631898942509-VMYrnXyYZv--image.png?' + Date.now();
-    }
+ 
 
 </script>
