@@ -26,7 +26,9 @@
 
 
 <script>
-  import axios from 'axios'
+import { storage } from "./firebase"
+import { ref, uploadBytes } from  "firebase/storage"
+
 export default {
   name: 'imageUpload',
   data() {
@@ -45,10 +47,10 @@ export default {
       this.item.imageUrl = URL.createObjectURL(file)
     },
     submitFile() {
-      const fd = new FormData()
-      fd.append("image", this.image, this.image.name)
-        axios.post("gs://cc2023-a7edf.appspot.com").then(res=>console.log(res))
-   
+      const storageRef = ref(storage, "input/"+this.image.name);
+      uploadBytes(storageRef, this.file).then((snapshot)=>{
+        console.log(snapshot)
+      })
       }
   }
 } 
